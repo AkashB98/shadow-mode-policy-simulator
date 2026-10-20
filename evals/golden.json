@@ -1,0 +1,253 @@
+{
+  "changed_steps": [
+    {
+      "args": {
+        "amount": 350,
+        "order_id": "H-1043"
+      },
+      "delta": "allow_to_approval",
+      "new_action": "require_approval",
+      "new_rule": "refunds over $200 need approval",
+      "old_action": "allow",
+      "old_rule": "routine refunds auto-approved",
+      "seq": 3,
+      "tool": "billing.refund",
+      "trace_id": "t-001"
+    },
+    {
+      "args": {
+        "order_id": "H-1045",
+        "qty": 8
+      },
+      "delta": "allow_to_approval",
+      "new_action": "require_approval",
+      "new_rule": "bulk shipments escalate sooner",
+      "old_action": "allow",
+      "old_rule": "small shipments auto-approved",
+      "seq": 6,
+      "tool": "warehouse.ship_high_value",
+      "trace_id": "t-001"
+    },
+    {
+      "args": {
+        "amount": 8200,
+        "order_id": "H-2011"
+      },
+      "delta": "approval_to_deny",
+      "new_action": "deny",
+      "new_rule": "huge refunds refused",
+      "old_action": "require_approval",
+      "old_rule": "big refunds need approval",
+      "seq": 2,
+      "tool": "billing.refund",
+      "trace_id": "t-002"
+    },
+    {
+      "args": {
+        "amount": 6400,
+        "order_id": "H-2013"
+      },
+      "delta": "approval_to_deny",
+      "new_action": "deny",
+      "new_rule": "huge refunds refused",
+      "old_action": "require_approval",
+      "old_rule": "big refunds need approval",
+      "seq": 5,
+      "tool": "billing.refund",
+      "trace_id": "t-002"
+    },
+    {
+      "args": {
+        "amount": 450,
+        "order_id": "H-3010"
+      },
+      "delta": "allow_to_approval",
+      "new_action": "require_approval",
+      "new_rule": "refunds over $200 need approval",
+      "old_action": "allow",
+      "old_rule": "routine refunds auto-approved",
+      "seq": 0,
+      "tool": "billing.refund",
+      "trace_id": "t-003"
+    },
+    {
+      "args": {
+        "amount": 275,
+        "order_id": "H-3011"
+      },
+      "delta": "allow_to_approval",
+      "new_action": "require_approval",
+      "new_rule": "refunds over $200 need approval",
+      "old_action": "allow",
+      "old_rule": "routine refunds auto-approved",
+      "seq": 1,
+      "tool": "billing.refund",
+      "trace_id": "t-003"
+    },
+    {
+      "args": {
+        "order_id": "H-3013",
+        "qty": 6
+      },
+      "delta": "allow_to_approval",
+      "new_action": "require_approval",
+      "new_rule": "bulk shipments escalate sooner",
+      "old_action": "allow",
+      "old_rule": "small shipments auto-approved",
+      "seq": 4,
+      "tool": "warehouse.ship_high_value",
+      "trace_id": "t-003"
+    },
+    {
+      "args": {
+        "amount": 499,
+        "order_id": "H-3015"
+      },
+      "delta": "allow_to_approval",
+      "new_action": "require_approval",
+      "new_rule": "refunds over $200 need approval",
+      "old_action": "allow",
+      "old_rule": "routine refunds auto-approved",
+      "seq": 6,
+      "tool": "billing.refund",
+      "trace_id": "t-003"
+    },
+    {
+      "args": {
+        "order_id": "H-4011",
+        "qty": 7
+      },
+      "delta": "allow_to_approval",
+      "new_action": "require_approval",
+      "new_rule": "bulk shipments escalate sooner",
+      "old_action": "allow",
+      "old_rule": "small shipments auto-approved",
+      "seq": 1,
+      "tool": "warehouse.ship_high_value",
+      "trace_id": "t-004"
+    }
+  ],
+  "driving_rules": [
+    {
+      "changed_steps": 4,
+      "example": {
+        "delta": "allow_to_approval",
+        "tool": "billing.refund"
+      },
+      "rule": "refunds over $200 need approval"
+    },
+    {
+      "changed_steps": 3,
+      "example": {
+        "delta": "allow_to_approval",
+        "tool": "warehouse.ship_high_value"
+      },
+      "rule": "bulk shipments escalate sooner"
+    },
+    {
+      "changed_steps": 2,
+      "example": {
+        "delta": "approval_to_deny",
+        "tool": "billing.refund"
+      },
+      "rule": "huge refunds refused"
+    }
+  ],
+  "per_tool": {
+    "billing.refund": {
+      "allow_to_approval": 4,
+      "approval_to_deny": 2,
+      "unchanged": 4
+    },
+    "helios.get_order": {
+      "unchanged": 5
+    },
+    "helios.order_lookup": {
+      "unchanged": 1
+    },
+    "helios.search_products": {
+      "unchanged": 4
+    },
+    "warehouse.ship_high_value": {
+      "allow_to_approval": 3,
+      "unchanged": 7
+    }
+  },
+  "summary": {
+    "baseline": "helios support policy v1 (live)",
+    "candidate": "helios support policy v2 (tighter)",
+    "changed_rate": 0.3,
+    "delta_counts": {
+      "allow_to_approval": 7,
+      "allow_to_deny": 0,
+      "approval_to_allow": 0,
+      "approval_to_deny": 2,
+      "deny_to_allow": 0,
+      "deny_to_approval": 0,
+      "unchanged": 21
+    },
+    "loosened": 0,
+    "new_approval_rate": 0.2333,
+    "new_approvals": 7,
+    "new_automations": 0,
+    "new_denial_rate": 0.0667,
+    "new_denials": 2,
+    "steps": 30,
+    "traces": 5,
+    "traces_changed": 3,
+    "traces_clean": 1,
+    "traces_stalled": 1
+  },
+  "trace_impacts": [
+    {
+      "changed": 2,
+      "loosened": 0,
+      "new_approvals": 2,
+      "new_automations": 0,
+      "new_denials": 0,
+      "status": "changed",
+      "steps": 8,
+      "trace_id": "t-001"
+    },
+    {
+      "changed": 2,
+      "loosened": 0,
+      "new_approvals": 0,
+      "new_automations": 0,
+      "new_denials": 2,
+      "status": "stalls",
+      "steps": 6,
+      "trace_id": "t-002"
+    },
+    {
+      "changed": 4,
+      "loosened": 0,
+      "new_approvals": 4,
+      "new_automations": 0,
+      "new_denials": 0,
+      "status": "changed",
+      "steps": 7,
+      "trace_id": "t-003"
+    },
+    {
+      "changed": 1,
+      "loosened": 0,
+      "new_approvals": 1,
+      "new_automations": 0,
+      "new_denials": 0,
+      "status": "changed",
+      "steps": 5,
+      "trace_id": "t-004"
+    },
+    {
+      "changed": 0,
+      "loosened": 0,
+      "new_approvals": 0,
+      "new_automations": 0,
+      "new_denials": 0,
+      "status": "clean",
+      "steps": 4,
+      "trace_id": "t-005"
+    }
+  ]
+}
