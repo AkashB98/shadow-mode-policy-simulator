@@ -1,0 +1,65 @@
+{
+  "default_action": "require_approval",
+  "name": "helios support policy v2 (tighter)",
+  "rules": [
+    {
+      "action": "allow",
+      "name": "read-only store tools",
+      "tool": "helios.*"
+    },
+    {
+      "action": "allow",
+      "args": {
+        "amount": {
+          "lte": 200
+        }
+      },
+      "name": "tiny refunds auto-approved",
+      "tool": "billing.refund"
+    },
+    {
+      "action": "deny",
+      "args": {
+        "amount": {
+          "gt": 5000
+        }
+      },
+      "name": "huge refunds refused",
+      "tool": "billing.refund"
+    },
+    {
+      "action": "require_approval",
+      "args": {
+        "amount": {
+          "gt": 200
+        }
+      },
+      "name": "refunds over $200 need approval",
+      "on_timeout": "deny",
+      "tool": "billing.refund",
+      "ttl_seconds": 300
+    },
+    {
+      "action": "allow",
+      "args": {
+        "qty": {
+          "lt": 5
+        }
+      },
+      "name": "small parcels auto-approved",
+      "tool": "warehouse.ship_high_value"
+    },
+    {
+      "action": "require_approval",
+      "args": {
+        "qty": {
+          "gte": 5
+        }
+      },
+      "name": "bulk shipments escalate sooner",
+      "on_timeout": "escalate",
+      "tool": "warehouse.ship_high_value",
+      "ttl_seconds": 120
+    }
+  ]
+}
