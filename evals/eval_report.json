@@ -1,0 +1,59 @@
+{
+  "evals": [
+    {
+      "name": "summary_headline",
+      "passed": true
+    },
+    {
+      "name": "changed_steps",
+      "passed": true
+    },
+    {
+      "name": "per_tool",
+      "passed": true
+    },
+    {
+      "name": "driving_rules",
+      "passed": true
+    },
+    {
+      "name": "trace_impacts",
+      "passed": true
+    },
+    {
+      "name": "disk_matches_memory",
+      "passed": true
+    },
+    {
+      "name": "determinism_md5",
+      "passed": true
+    }
+  ],
+  "golden": "evals/golden.json",
+  "passed": true,
+  "summary": {
+    "baseline": "helios support policy v1 (live)",
+    "candidate": "helios support policy v2 (tighter)",
+    "changed_rate": 0.3,
+    "delta_counts": {
+      "allow_to_approval": 7,
+      "allow_to_deny": 0,
+      "approval_to_allow": 0,
+      "approval_to_deny": 2,
+      "deny_to_allow": 0,
+      "deny_to_approval": 0,
+      "unchanged": 21
+    },
+    "loosened": 0,
+    "new_approval_rate": 0.2333,
+    "new_approvals": 7,
+    "new_automations": 0,
+    "new_denial_rate": 0.0667,
+    "new_denials": 2,
+    "steps": 30,
+    "traces": 5,
+    "traces_changed": 3,
+    "traces_clean": 1,
+    "traces_stalled": 1
+  }
+}
