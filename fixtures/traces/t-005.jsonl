@@ -1,0 +1,5 @@
+{"created_at": "2026-10-20T00:00:00Z", "kind": "meta", "scenario": "clean day", "trace_id": "t-005"}
+{"args": {"q": "mug"}, "duration_ms": 12.5, "kind": "step", "observation": "browse the catalog", "request_id": "req-t-005-0", "result": {"ok": true}, "seq": 0, "timestamp": "2026-10-20T00:00:01Z", "tool": "helios.search_products"}
+{"args": {"order_id": "H-3050"}, "duration_ms": 12.5, "kind": "step", "observation": "look up an order", "request_id": "req-t-005-1", "result": {"ok": true}, "seq": 1, "timestamp": "2026-10-20T00:00:01Z", "tool": "helios.get_order"}
+{"args": {"amount": 45, "order_id": "H-3050"}, "duration_ms": 12.5, "kind": "step", "observation": "tiny goodwill refund", "request_id": "req-t-005-2", "result": {"ok": true}, "seq": 2, "timestamp": "2026-10-20T00:00:01Z", "tool": "billing.refund"}
+{"args": {"order_id": "H-3051", "qty": 1}, "duration_ms": 12.5, "kind": "step", "observation": "ship the mug", "request_id": "req-t-005-3", "result": {"ok": true}, "seq": 3, "timestamp": "2026-10-20T00:00:01Z", "tool": "warehouse.ship_high_value"}
